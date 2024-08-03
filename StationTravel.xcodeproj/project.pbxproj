@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1535862C54F6260011E293 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1535852C54F6260011E293 /* Data.swift */; };
+		BC1535882C54F9A60011E293 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1535872C54F9A60011E293 /* HomeViewController.swift */; };
+		BC15358B2C5507EE0011E293 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BC15358A2C5507EE0011E293 /* RealmSwift */; };
+		BC15358D2C550A980011E293 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC15358C2C550A980011E293 /* RankingViewController.swift */; };
+		BC1535922C550CD50011E293 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1535902C550CD50011E293 /* ScoreTableViewCell.swift */; };
+		BC1535932C550CD50011E293 /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1535912C550CD50011E293 /* ScoreTableViewCell.xib */; };
 		BC31B5F92C146CEA000E2700 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC31B5F82C146CEA000E2700 /* GameViewController.swift */; };
-		BC77C0082C26D19E005D7C48 /* Lists.csv in Resources */ = {isa = PBXBuildFile; fileRef = BC77C0072C26D19E005D7C48 /* Lists.csv */; };
+		BC91D2602C53AEB500169050 /* List.csv in Resources */ = {isa = PBXBuildFile; fileRef = BC91D25F2C53AEB500169050 /* List.csv */; };
 		BCB8E1302BD3C5BB00C6D57B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB8E12F2BD3C5BB00C6D57B /* AppDelegate.swift */; };
 		BCB8E1322BD3C5BB00C6D57B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB8E1312BD3C5BB00C6D57B /* SceneDelegate.swift */; };
 		BCB8E1342BD3C5BB00C6D57B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB8E1332BD3C5BB00C6D57B /* ViewController.swift */; };
@@ -39,8 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC1535852C54F6260011E293 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		BC1535872C54F9A60011E293 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BC15358C2C550A980011E293 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		BC1535902C550CD50011E293 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
+		BC1535912C550CD50011E293 /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
 		BC31B5F82C146CEA000E2700 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		BC77C0072C26D19E005D7C48 /* Lists.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lists.csv; sourceTree = "<group>"; };
+		BC91D25F2C53AEB500169050 /* List.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = List.csv; sourceTree = "<group>"; };
 		BCB8E12C2BD3C5BB00C6D57B /* StationTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StationTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCB8E12F2BD3C5BB00C6D57B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCB8E1312BD3C5BB00C6D57B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC15358B2C5507EE0011E293 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,11 +119,16 @@
 			children = (
 				BCB8E12F2BD3C5BB00C6D57B /* AppDelegate.swift */,
 				BCB8E1312BD3C5BB00C6D57B /* SceneDelegate.swift */,
+				BC1535872C54F9A60011E293 /* HomeViewController.swift */,
 				BCB8E1332BD3C5BB00C6D57B /* ViewController.swift */,
 				BC31B5F82C146CEA000E2700 /* GameViewController.swift */,
 				BCEBEAA82C39527600F41862 /* GoalViewController.swift */,
-				BC77C0072C26D19E005D7C48 /* Lists.csv */,
+				BC1535852C54F6260011E293 /* Data.swift */,
+				BC15358C2C550A980011E293 /* RankingViewController.swift */,
+				BC91D25F2C53AEB500169050 /* List.csv */,
 				BCB8E1352BD3C5BB00C6D57B /* Main.storyboard */,
+				BC1535902C550CD50011E293 /* ScoreTableViewCell.swift */,
+				BC1535912C550CD50011E293 /* ScoreTableViewCell.xib */,
 				BCB8E1382BD3C5BC00C6D57B /* Assets.xcassets */,
 				BCB8E13A2BD3C5BC00C6D57B /* LaunchScreen.storyboard */,
 				BCB8E13D2BD3C5BC00C6D57B /* Info.plist */,
@@ -152,6 +169,9 @@
 			dependencies = (
 			);
 			name = StationTravel;
+			packageProductDependencies = (
+				BC15358A2C5507EE0011E293 /* RealmSwift */,
+			);
 			productName = StationTravel;
 			productReference = BCB8E12C2BD3C5BB00C6D57B /* StationTravel.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +244,9 @@
 				Base,
 			);
 			mainGroup = BCB8E1232BD3C5BB00C6D57B;
+			packageReferences = (
+				BC1535892C5507EE0011E293 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = BCB8E12D2BD3C5BB00C6D57B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -240,10 +263,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1535932C550CD50011E293 /* ScoreTableViewCell.xib in Resources */,
 				BCB8E13C2BD3C5BC00C6D57B /* LaunchScreen.storyboard in Resources */,
 				BCB8E1392BD3C5BC00C6D57B /* Assets.xcassets in Resources */,
 				BCB8E1372BD3C5BB00C6D57B /* Main.storyboard in Resources */,
-				BC77C0082C26D19E005D7C48 /* Lists.csv in Resources */,
+				BC91D2602C53AEB500169050 /* List.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,10 +293,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC31B5F92C146CEA000E2700 /* GameViewController.swift in Sources */,
+				BC1535922C550CD50011E293 /* ScoreTableViewCell.swift in Sources */,
+				BC1535862C54F6260011E293 /* Data.swift in Sources */,
 				BCEBEAA92C39527600F41862 /* GoalViewController.swift in Sources */,
 				BCB8E1342BD3C5BB00C6D57B /* ViewController.swift in Sources */,
 				BCB8E1302BD3C5BB00C6D57B /* AppDelegate.swift in Sources */,
+				BC1535882C54F9A60011E293 /* HomeViewController.swift in Sources */,
 				BCB8E1322BD3C5BB00C6D57B /* SceneDelegate.swift in Sources */,
+				BC15358D2C550A980011E293 /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +645,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BC1535892C5507EE0011E293 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BC15358A2C5507EE0011E293 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BC1535892C5507EE0011E293 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BCB8E1242BD3C5BB00C6D57B /* Project object */;
 }

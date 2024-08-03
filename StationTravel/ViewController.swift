@@ -14,6 +14,7 @@ class ViewController: UIViewController,MKMapViewDelegate,UIPickerViewDataSource,
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var stationLabel: UILabel!
+    @IBOutlet var adressLabel: UILabel!
     @IBOutlet var button: UIButton!
     @IBOutlet var prefecturePickerView: UIPickerView!
     
@@ -59,17 +60,12 @@ class ViewController: UIViewController,MKMapViewDelegate,UIPickerViewDataSource,
         
         locationManager.delegate = self // CLLocationManagerDelegateプロトコルを使用するためにdelegateをViewControllerクラスに設定する。
         locationManager.requestWhenInUseAuthorization() // 位置情報の許可設定を通知する。
-        locationManager.requestLocation()
-        
+   
         self.locationManager.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.requestLocation()
-        
         mapView.delegate = self
-        
         initLocation() //位置情報取得の関数の呼び出し
         
-        csvBundle = Bundle.main.path(forResource: "Lists", ofType: "csv")!
+        csvBundle = Bundle.main.path(forResource: "List", ofType: "csv")!
         do {
             csvData = try String(contentsOfFile: csvBundle!, encoding: String.Encoding.utf8)
         } catch {
@@ -86,14 +82,25 @@ class ViewController: UIViewController,MKMapViewDelegate,UIPickerViewDataSource,
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated) // 親クラスのメソッドを呼び出す
+        locationManager.stopUpdatingLocation()
+        
+        print("アホ")
+        
+    }
+    
+    
+    
     @IBAction func tapButton () {
         
         locationManager.requestLocation()
         print(exArray.count)
         randomm = Int.random(in: 0..<exArray.count)
-        print(randomm)
         stationData = exArray[randomm]
         array = stationData.components(separatedBy: ",")
+        
+        print(array)
         
         guard let latitude = Double(array[2].trimmingCharacters(in: .whitespacesAndNewlines)),
               let longitude = Double(array[3].trimmingCharacters(in: .whitespacesAndNewlines)) else {
@@ -109,6 +116,8 @@ class ViewController: UIViewController,MKMapViewDelegate,UIPickerViewDataSource,
         
         print(latitude)
         print(longitude)
+        
+        adressLabel.text = array[1]
         
         UserDefaults.standard.set(latitude, forKey: "sLat")
         UserDefaults.standard.set(longitude, forKey: "sLon")
@@ -248,13 +257,16 @@ class ViewController: UIViewController,MKMapViewDelegate,UIPickerViewDataSource,
 }
 
 extension ViewController: CLLocationManagerDelegate {
+    
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let loc = locations.last else { return }
         
         print("location: \(loc)")
-        print("緯度: \(loc.coordinate.latitude)")
-        print("経度: \(loc.coordinate.longitude)")
+        print("緯度!!: \(loc.coordinate.latitude)")
+        print("経度!!: \(loc.coordinate.longitude)")
         nowLat = loc.coordinate.latitude
         nowLon = loc.coordinate.longitude
         

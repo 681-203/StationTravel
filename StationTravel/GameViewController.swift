@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Foundation
+import RealmSwift
 
 class GameViewController: UIViewController, MKMapViewDelegate {
     
@@ -19,29 +20,35 @@ class GameViewController: UIViewController, MKMapViewDelegate {
     //位置情報取得関連の変数
     var didStartUpdatingLocation = false
     
-    
+    let date = Date()
     
     var Lon :Double!
     var Lat :Double!
     var sLat :Double!
     var sLon :Double!
     
+    
+    
     var points :Double!
     
     var station:String!
     
-    var locationManager: CLLocationManager!
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showPermissionAlert()
         
+        locationManager.delegate = self
+        
         Lat = UserDefaults.standard.double(forKey: "Lat")
         Lon = UserDefaults.standard.double(forKey: "Lon")
         sLat = UserDefaults.standard.double(forKey: "sLat")
         sLon = UserDefaults.standard.double(forKey: "sLon")//駅の緯度経度を取得
         station = UserDefaults.standard.string(forKey: "station")
+        
+        locationManager.startUpdatingLocation() //
         
         guard let LatOp = Lat else { return }
         guard let LonOp = Lon else { return }
@@ -53,16 +60,18 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         _ = MKCoordinateRegion()
         
         let squaredDistance = pow(sLatOp - LatOp, 2) + pow(sLonOp - LonOp, 2)
-        points = abs(sqrt(squaredDistance))*154
+        print(abs(sqrt(squaredDistance)))
+
+        points = pow(2,abs(sqrt(squaredDistance)))
+        
+        UserDefaults.standard.set(points, forKey: "points")
         
         addPinToMap()
         
-        
-        
         print("獲得予想ポイント:",points)
-        print("オプショナル:\(LatOp)")
-        
     }
+    
+    
     
     /*
      // MARK: - Navigation
@@ -75,52 +84,10 @@ class GameViewController: UIViewController, MKMapViewDelegate {
      */
     
     @IBAction func dismiss2() {
-        self.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-//    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if let location = locations.last {
-//            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
-//                                                longitude: location.coordinate.longitude)
-//            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02,
-//                                                                                   longitudeDelta: 0.02))
-//            mapView.setRegion(region, animated: true)
-//            let nowLat = location.coordinate.latitude
-//            let nowLon = location.coordinate.longitude
-//            print("あ‼️：",abs(nowLat - sLat))
-//            if abs(nowLat - sLat) <= 0.5 && abs(nowLon - sLon) <= 0.5 {
-//                
-//                self.performSegue(withIdentifier: "Goal", sender: self)
-//            }
-//            
-//        }
-//    }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print("フィ絵wjあうhfg憂TBいう")
-//        guard let location = locations.last else { return } // 最新の位置情報が取得できない場合は処理を終了
 //
-//        // 現在地の緯度と経度を取得
-//        let nowLat = location.coordinate.latitude
-//        let nowLon = location.coordinate.longitude
-//
-//        // 現在地と目標地点の距離を計算
-//        let distanceLat = abs(nowLat - sLat)
-//        let distanceLon = abs(nowLon - sLon)
-//
-//        // 目標地点との距離が500m以内の場合のみ処理を実行
-//        guard distanceLat <= 0.5 && distanceLon <= 0.5 else { return }
-//
-//        // 距離情報をコンソールに出力
-//        print("現在地と目標地点の距離: 緯度: \(distanceLat), 経度: \(distanceLon)")
-//
-//        // セグエを実行
-//        self.performSegue(withIdentifier: "Goal", sender: self)
-//    } //なくても大丈夫www どうすりゃいいのwwww
-
-
-    
     
     func addPinToMap() {
         let pin = MKPointAnnotation()
@@ -149,6 +116,8 @@ class GameViewController: UIViewController, MKMapViewDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
+    
+     
 }
 
 extension GameViewController: CLLocationManagerDelegate {
@@ -174,13 +143,19 @@ extension GameViewController: CLLocationManagerDelegate {
         let distanceLon = abs(nowLon - sLon)
 
         // 目標地点との距離が500m以内の場合のみ処理を実行
-        guard distanceLat <= 0.5 && distanceLon <= 0.5 else { return }
+        guard distanceLat <= 0.005 && distanceLon <= 0.005 else { return }
 
         // 距離情報をコンソールに出力
         print("現在地と目標地点の距離: 緯度: \(distanceLat), 経度: \(distanceLon)")
+        
+        
 
         // セグエを実行
         self.performSegue(withIdentifier: "Goal", sender: self)
+        
+        
+        
+        
         
     }
     
